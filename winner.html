@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pong Winner</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .winner-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .winner-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 18px;
+      padding: 40px 32px;
+      text-align: center;
+      max-width: 560px;
+      width: 100%;
+    }
+    .winner-title {
+      font-size: 2.5rem;
+      margin: 0 0 18px;
+      color: #fff;
+    }
+    .winner-stars {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .winner-star {
+      width: 54px;
+      height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #facc15;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      box-shadow: 0 10px 30px rgba(250, 204, 21, 0.35);
+    }
+    .winner-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .winner-link {
+      display: inline-block;
+      background: #1f8efd;
+      color: #fff;
+      padding: 12px 26px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .winner-link.secondary {
+      background: #22c55e;
+    }
+  </style>
+</head>
+<body>
+  <div class="winner-container">
+    <div class="winner-card">
+      <div class="winner-stars">
+        <div class="winner-star star-1"></div>
+        <div class="winner-star star-2"></div>
+        <div class="winner-star star-3"></div>
+      </div>
+      <h1 class="winner-title" id="winnerMessage">Player wins!</h1>
+      <div class="winner-actions">
+        <a id="restartLink" class="winner-link" href="#">Restart</a>
+        <a class="winner-link secondary" href="mode.html">Return to Mode</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const side = params.get('side') || 'left';
+    const mode = params.get('mode') || 'multiplayer';
+    const restartLink = document.getElementById('restartLink');
+
+    // Determine winner message based on mode and which side won
+    let message = '';
+    if (mode === 'single') {
+      // single mode: human (left) vs CPU (right)
+      if (side === 'left') {
+        message = 'You win!';
+      } else {
+        message = 'You lost.';
+      }
+      restartLink.href = 'single.html';
+    } else {
+      // multiplayer: two players
+      if (side === 'left') {
+        message = 'Player 1 wins!';
+      } else {
+        message = 'Player 2 wins!';
+      }
+      restartLink.href = 'multiplayer.html';
+    }
+
+    document.getElementById('winnerMessage').textContent = message;
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pong — Single Player</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <h1>Pong — Single Player</h1>
+    <p>Use the W/S keys to control the left paddle. The right paddle is controlled by the CPU.</p>
+
+    <div class="game-box">
+      <svg class="game-bg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="500" fill="black" />
+        <g opacity="0.08">
+          <rect x="40" y="60" width="12" height="120" rx="3" fill="#1f8efd" />
+          <rect x="708" y="60" width="12" height="120" rx="3" fill="#22c55e" />
+          <circle cx="400" cy="110" r="8" fill="#fff" />
+        </g>
+      </svg>
+      <div class="arcade-score-row">
+        <div class="arcade-score">YOU: <span class="arcade-value" id="arcadeLeftScore">0</span></div>
+        <div class="arcade-score">CPU: <span class="arcade-value" id="arcadeRightScore">0</span></div>
+      </div>
+      <canvas id="pongCanvas" width="800" height="500"></canvas>
+      <!-- DOM fallback elements for paddles/ball (kept in sync by script) -->
+      <div id="fallback" aria-hidden="true">
+        <div id="domLeftPaddle" class="dom-paddle"></div>
+        <div id="domRightPaddle" class="dom-paddle"></div>
+        <div id="domBall" class="dom-ball"></div>
+      </div>
+    </div>
+
+    <button id="restartButton">Restart Game</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

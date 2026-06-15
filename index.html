@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pong — Landing</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Landing-specific adjustments */
+    .landing-hero {
+      position: relative;
+      height: calc(100vh - 40px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .bg-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .play-box {
+      z-ex: 2;
+      display: inline-block;
+      background: linear-gradient(135deg, #1f8efd, #22c55e);
+      color: white;
+      padding: 28px 48px;
+      font-size: 2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      transition: all 0.3s ease;
+    }
+    
+    .play-box:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 40px rgba(31, 142, 253, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="landing-hero">
+      <!-- SVG background of paddles and ball -->
+      <svg class="bg-svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="500" fill="black" />
+        <g transform="translate(0,50)">
+          <rect x="40" y="60" width="12" height="120" rx="3" fill="#1f8efd" />
+          <rect x="708" y="60" width="12" height="120" rx="3" fill="#22c55e" />
+          <circle cx="400" cy="110" r="8" fill="#fff" />
+        </g>
+        <g transform="translate(0,250)">
+          <rect x="40" y="60" width="12" height="120" rx="3" fill="#22c55e" />
+          <rect x="708" y="60" width="12" height="120" rx="3" fill="#1f8efd" />
+          <circle cx="400" cy="110" r="8" fill="#fff" />
+        </g>
+      </svg>
+
+      <a class="play-box" href="mode.html">PLAY</a>
+    </div>
+  </div>
+
+</body>
+</html>
